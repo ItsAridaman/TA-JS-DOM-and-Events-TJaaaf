@@ -35,17 +35,15 @@ img {
 }
 .box
 {
-  width: 10px;
-  height: 10px;
+  width: 4rem;
+  height: 4rem;
   border: 2px solid black;
   border-radius: 3px;
   margin: 5px;
-  background-color: green;
 }
-.boxess
+.boxes
 {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
 
 }
