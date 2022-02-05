@@ -33,3 +33,19 @@ img {
   max-width: 100%;
   height: auto;
 }
+.box
+{
+  width: 10px;
+  height: 10px;
+  border: 2px solid black;
+  border-radius: 3px;
+  margin: 5px;
+  background-color: green;
+}
+.boxess
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
