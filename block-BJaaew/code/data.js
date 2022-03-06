@@ -326,3 +326,105 @@ let got = {
     },
   ],
 };
+
+let main=document.querySelector(".main");
+let container=document.querySelector(".container");
+let content=document.querySelector(".content");
+let inputt=document.querySelector(".inputt");
+
+
+
+let hello=got.houses.reduce((acc,cv)=>
+{
+  acc=acc.concat(cv.people);
+  return acc;
+},[]);
+
+console.log(hello);
+
+ let alltags=got.houses.map((house)=>
+{
+  
+  return house.name;
+})
+
+let activeHouse="";
+
+function Tags(alltags)
+{
+alltags.map((tag)=>{
+let div5=document.createElement("div");
+div5.classList.add("content-box");
+div5.innerText=tag;
+div5.style.border="2px solid black";
+if(activeHouse===tag)
+{
+  div5.classList.add("activeTag");
+}
+div5.addEventListener("click",()=>
+    {
+    activeHouse=tag;
+    let find=got.houses.find((house)=>house.name===tag).people;
+    console.log(find);
+    displayUI(find);
+})
+content.append(div5);
+
+})
+}
+
+
+function displayUI(data=[])
+{
+container.innerHTML="";
+data.forEach((ppl)=>
+{
+  let container=document.querySelector(".container");
+  let div1=document.createElement("div");
+  div1.classList.add("div1");
+  let div2=document.createElement("div");
+  div2.classList.add("div2");
+  let image=document.createElement("img");
+  image.src=ppl.image;
+  image.classList.add("image")
+  let h=document.createElement("h");
+  h.innerText=ppl.name;
+  h.classList.add("heading1");
+  div2.append(image,h);
+  let p=document.createElement("p");
+  p.classList.add("para");
+  p.innerText=ppl.description;
+  let div3=document.createElement("div");
+  div3.classList.add("div3");
+  let h1=document.createElement("h");
+  h1.innerText="Learn More";
+  div3.append(h1);
+  div1.append(div2,p,div3);
+  container.append(div1);
+})
+}
+
+
+displayUI(hello);
+Tags(alltags);
+
+function search(event)
+{
+  let searchValue=event.target.value;
+  let filterPeople=hello.filter((ppl)=>ppl.name.toLowerCase().includes(searchValue.toLowerCase()));
+  displayUI(filterPeople);
+
+}
+
+inputt.addEventListener("input",search);
+
+
+
+
+
+
+
+
+
+
+
